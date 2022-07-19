@@ -1,16 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System.Collections;
+﻿using System.Collections;
 using Microsoft.Extensions.DependencyInjection;
 using Raccoon.Ninja.Cli;
 using Raccoon.Ninja.Console.App.With.Di.Core.Constants;
 using Raccoon.Ninja.Console.App.With.Di.Core.Interfaces.Repositories;
 
-//https://wizard-world-api.herokuapp.com/swagger/index.html
 Console.WriteLine("Hello, World!");
 Disclaimer();
 
-using var host = Bootstrap.Build(args, HttpConstants.HttpClientName, HttpConstants.FakeAuthenticationToken);
+using var host = Bootstrap.Build(args, HttpConstants.HttpClientName);
 var scope = host.Services.CreateScope();
 var wizardRepository = scope.ServiceProvider.GetRequiredService<IWizardRepository>();
 var genericHouseRepository = scope.ServiceProvider.GetRequiredService<IGenericHouseRepository>();
